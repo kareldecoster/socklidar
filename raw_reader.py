@@ -24,6 +24,8 @@ along with this code.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 
+COM_PORT = '/dev/tty05'
+
 # XVLIDAR-04LX specs
 RPLIDAR_MAX_SCAN_DIST_MM    = 6000
 RPLIDAR_DETECTION_DEG       = 360
@@ -52,7 +54,7 @@ else:
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)
-    lidar = socklidar()
+    lidar = socklidar(COM_PORT)
     while done == 0 :
         time.sleep(1)
         distances = [pair[0] for pair in lidar.getScan()]
