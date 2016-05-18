@@ -27,7 +27,7 @@ import threading, time, traceback, os, socket, sys, struct, math, numpy
 class socklidar(object):
 
     def __init__(self, com_port):
-        self.server_address = ("192.168.7.1", 1234)
+        self.server_address = ("192.168.5.2", 1234)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.thread = threading.Thread(target=self._read_lidar, args=())
         self.thread.daemon = False
@@ -84,7 +84,6 @@ class socklidar(object):
                         fy.write(ystr)
                         fx.close()
                         fy.close()
-
                         # update scan
                         angle = 0
                         while (angle < 360):
